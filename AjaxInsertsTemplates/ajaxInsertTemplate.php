@@ -9,7 +9,7 @@
 	<li style="list-style-type: none;">Клик по ссылке добавит get-параметр и перезагрузит страницу</li>
 </ul>
 <ul class="search-results">
-	<?php foreach($searchResults as $value) : ?>
-	<li><span><?= $value ; ?></span>: <a href="/front/LiveSearchForm.php?name=<?= $value; ?>">Перейти</a></li>
+	<?php foreach($searchResults as $row) : ?>
+	<li><span><?= $row['name'] ; ?></span>: <a href="/front/LiveSearchForm.php?id=<?= $row['id']; ?>">Перейти</a></li>
 	<?php endforeach; ?>
 </ul>

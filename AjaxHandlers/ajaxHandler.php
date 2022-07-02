@@ -1,8 +1,5 @@
 <?php
 	
-	// Наша база данных, по которой будем осуществлять поиск
-	$names = require_once __DIR__ . '/../sources/names.php';
-	
 	// Здесь будем хранить результаты поиска
 	$searchResults = [];
 	
@@ -17,17 +14,16 @@
 		// Оставить в тексте только буквы, цифры и пробел
 		$searchRequest = mb_eregi_replace("[^a-zа-яё0-9 ]", '', $searchRequest);
 		
+		// Триммируем
 		$searchRequest = trim($searchRequest);
 		
-		// Ищем имена, подходящие под наш запрос
-		foreach($names as $name){
-			// strpos работает аналогично sql LIKE '%needle%'
-			if(strpos($name, $searchRequest) !== false){
-				
-				// Подходящие имена собираем в массив
-				$searchResults[] = $name;
-			}
-		}
+		// Подключаемся к базе данных, выполняем запрос
+		$dbh = new \PDO('mysql:dbname=experimental;host=localhost;charset=UTF8', 'root', '');
+		$sth = $dbh->prepare('SELECT * FROM `users` WHERE `name` LIKE :search ORDER BY `name` LIMIT 10');
+		$sth->execute([':search' => $searchRequest . '%']);
+		
+		// Получаем результаты из базы данных в виде ассоциативного массива
+		$searchResults = $sth->fetchAll(\PDO::FETCH_ASSOC);
 	}
 	
 	// Если массив не пустой, подключаем файл ajaxInsertTemplate.php с html-шаблоном
