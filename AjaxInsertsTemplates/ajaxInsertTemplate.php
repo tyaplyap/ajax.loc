@@ -4,8 +4,12 @@
 <!-- <div id="display-handler-respose">... вот сюда ...</div> -->
 <!-- Это и есть ответ обработчка ajaxHandler.php, который будет помещен в переменную handlerRespose в скрипте с js -->
 <p>Результаты поиска:</p>
-<ul>
+<ul style=" margin-left: 0;padding-left: 0;">
+	<li style="list-style-type: none;">Клик по имени вставит имя в поле поиска и очистит результаты поиска</li>
+	<li style="list-style-type: none;">Клик по ссылке добавит get-параметр и перезагрузит страницу</li>
+</ul>
+<ul class="search-results">
 	<?php foreach($searchResults as $value) : ?>
-	<li><?= $value ; ?></li>
+	<li><span><?= $value ; ?></span>: <a href="/front/LiveSearchForm.php?name=<?= $value; ?>">Перейти</a></li>
 	<?php endforeach; ?>
 </ul>

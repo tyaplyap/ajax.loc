@@ -14,6 +14,11 @@
 		// Получаем поисковый запрос
 		$searchRequest = $_POST['name'];
 		
+		// Оставить в тексте только буквы, цифры и пробел
+		$searchRequest = mb_eregi_replace("[^a-zа-яё0-9 ]", '', $searchRequest);
+		
+		$searchRequest = trim($searchRequest);
+		
 		// Ищем имена, подходящие под наш запрос
 		foreach($names as $name){
 			// strpos работает аналогично sql LIKE '%needle%'
