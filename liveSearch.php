@@ -2,16 +2,9 @@
 <html lang="ru">
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Ajax jQuery PHP| Изучаем как работает Ajax с jQuery</title>	
+		<title>Ajax jQuery PHP| Живой поиск</title>	
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><!-- jQuery -->
-		<script src="/../js/ajaxScript.js?v=1"></script><!-- Подключаем наш скрипт ajax -->
-		<style>
-			.style{
-				
-			}
-		</style>
+		<script src="/liveSearch/ajax.js?v=2"></script><!-- Подключаем наш скрипт ajax -->
 	</head>
 	<body>
 		<!-- ***** Отправка с формы с перезагрузкой ***** -->

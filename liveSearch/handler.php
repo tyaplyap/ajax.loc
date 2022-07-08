@@ -20,7 +20,7 @@
 		
 		// Задаем шаблон поиска для подстановки в sql
 		// В соответствии с шаблоном будут найдены значения, начинающиеся с $searchRequest
-		$searchRequest = $searchRequest . '%';
+		$searchRequest = '%' . $searchRequest . '%';
 		
 		// Подключаемся к базе данных, выполняем запрос
 		$dbh = new \PDO('mysql:dbname=experimental;host=localhost;charset=UTF8', 'root', '');
@@ -38,6 +38,6 @@
 	// обработчик ничего не вернет скрипту ajax
 	
 	if($searchResults !== []){
-		include __DIR__ . '/../AjaxInsertsTemplates/ajaxInsertTemplate.php';
+		include __DIR__ . '/template.php';
 	}
 ?>
